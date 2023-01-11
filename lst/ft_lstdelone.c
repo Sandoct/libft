@@ -1,27 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpouzet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/14 18:50:16 by gpouzet           #+#    #+#             */
-/*   Updated: 2022/10/14 21:50:50 by gpouzet          ###   ########.fr       */
+/*   Created: 2022/10/18 15:47:51 by gpouzet           #+#    #+#             */
+/*   Updated: 2022/11/03 18:33:33 by gpouzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include "../libft.h"
 
-int	ft_lstsize(t_list *lst)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	t_list	*tmp;
-	int		ct;
-
-	ct = 0;
-	tmp = lst;
-	while (tmp != NULL)
+	if (lst && del)
 	{
-		tmp = tmp->next;
-		ct++;
+		del(lst->content);
+		free(lst);
 	}
-	return (ct);
 }
