@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_isnumber.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpouzet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/14 18:50:16 by gpouzet           #+#    #+#             */
-/*   Updated: 2023/04/14 12:39:43 by gpouzet          ###   ########.fr       */
+/*   Created: 2023/01/12 17:35:59 by gpouzet           #+#    #+#             */
+/*   Updated: 2023/04/14 12:48:19 by gpouzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../list.h"
+#include "../libft.h"
 
-int	ft_lstsize(t_list *lst)
+int	ft_isnumber(char *str)
 {
-	t_list	*tmp;
-	int		ct;
-
-	ct = 0;
-	tmp = lst;
-	while (tmp != NULL)
-	{
-		tmp = tmp->next;
-		ct++;
-	}
-	return (ct);
+	if (*str == '-')
+		str++;
+	while (*str)
+		if (ft_isdigit(*str++))
+			return (1);
+	return (0);
 }

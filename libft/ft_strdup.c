@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpouzet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/14 18:50:16 by gpouzet           #+#    #+#             */
-/*   Updated: 2023/04/14 12:39:43 by gpouzet          ###   ########.fr       */
+/*   Created: 2022/07/26 16:18:26 by gpouzet           #+#    #+#             */
+/*   Updated: 2023/04/14 13:00:08 by gpouzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../list.h"
+#include "../libft.h"
 
-int	ft_lstsize(t_list *lst)
+char	*ft_strdup(const char *src)
 {
-	t_list	*tmp;
-	int		ct;
+	char	*tmp;
+	char	*dest;
+	size_t	i;
 
-	ct = 0;
-	tmp = lst;
-	while (tmp != NULL)
+	i = 0;
+	tmp = (char *)src;
+	dest = malloc(ft_strlen(tmp)+1);
+	if (!dest)
+		return (dest);
+	while (i < ft_strlen(tmp)+1)
 	{
-		tmp = tmp->next;
-		ct++;
+		dest[i] = tmp[i];
+		i++;
 	}
-	return (ct);
+	return (dest);
 }

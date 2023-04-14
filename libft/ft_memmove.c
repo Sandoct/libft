@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpouzet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/22 18:54:58 by gpouzet           #+#    #+#             */
-/*   Updated: 2022/11/28 21:44:23 by gpouzet          ###   ########.fr       */
+/*   Created: 2022/09/27 12:29:53 by gpouzet           #+#    #+#             */
+/*   Updated: 2023/04/14 12:52:25 by gpouzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "../libft.h"
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
-# endif
-# include "../libft.h"
-# include <unistd.h>
+void	*ft_memmove(void *dest, const void *src, size_t n)
+{
+	unsigned char	*tmpdest;
+	unsigned char	*tmpsrc;
 
-char	*get_next_line(int fd);
-
-#endif
+	tmpdest = (unsigned char *)dest;
+	tmpsrc = (unsigned char *)src;
+	if (!dest && !src)
+		return (dest);
+	if (tmpdest < tmpsrc)
+		while (n--)
+			*tmpdest++ = *tmpsrc++;
+	else
+		while (--n + 1)
+			tmpdest[n] = tmpsrc[n];
+	return (dest);
+}

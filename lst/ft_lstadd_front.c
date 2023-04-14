@@ -6,10 +6,10 @@
 /*   By: gpouzet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 18:40:58 by gpouzet           #+#    #+#             */
-/*   Updated: 2022/10/14 20:19:00 by gpouzet          ###   ########.fr       */
+/*   Updated: 2023/04/14 12:37:51 by gpouzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../libft.h"
+#include "../list.h"
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
 {

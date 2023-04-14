@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpouzet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/14 18:50:16 by gpouzet           #+#    #+#             */
-/*   Updated: 2023/04/14 12:39:43 by gpouzet          ###   ########.fr       */
+/*   Created: 2022/09/29 12:41:21 by gpouzet           #+#    #+#             */
+/*   Updated: 2023/04/14 12:47:30 by gpouzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../list.h"
+#include "../libft.h"
 
-int	ft_lstsize(t_list *lst)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	t_list	*tmp;
-	int		ct;
+	void	*cal;
 
-	ct = 0;
-	tmp = lst;
-	while (tmp != NULL)
-	{
-		tmp = tmp->next;
-		ct++;
-	}
-	return (ct);
+	if (nmemb == 0 || size == 0)
+		return ((void *)0);
+	if ((nmemb * size) / nmemb != size)
+		return ((void *)0);
+	cal = malloc(nmemb * size);
+	if (cal)
+		ft_bzero(cal, nmemb * size);
+	return (cal);
 }

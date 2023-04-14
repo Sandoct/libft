@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpouzet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/14 18:26:44 by gpouzet           #+#    #+#             */
-/*   Updated: 2023/04/14 12:37:18 by gpouzet          ###   ########.fr       */
+/*   Created: 2022/07/19 11:56:26 by gpouzet           #+#    #+#             */
+/*   Updated: 2023/04/14 13:00:48 by gpouzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../list.h"
+#include "../libft.h"
 
-t_list	*ft_lstnew(void *content)
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	t_list	*new;
+	size_t	i;
+	size_t	j;
 
-	new = (t_list *)ft_calloc(1, sizeof(t_list));
-	if (!new)
+	i = 0;
+	j = 0;
+	if (size == 0 && (!src || !dest))
 		return (0);
-	new->content = content;
-	new->next = NULL;
-	return (new);
+	if (ft_strlen(dest) +1 > size)
+		return (ft_strlen(src) + size);
+	while (dest[j])
+		j++;
+	while (j +1 < size && src[i])
+		dest[j++] = src[i++];
+	if (size == 0 || !src[i] || j + 1 == size)
+		dest[j] = '\0';
+	return (ft_strlen(dest) + ft_strlen(src) - i);
 }

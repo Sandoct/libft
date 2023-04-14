@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpouzet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/14 18:50:16 by gpouzet           #+#    #+#             */
-/*   Updated: 2023/04/14 12:39:43 by gpouzet          ###   ########.fr       */
+/*   Created: 2022/09/29 10:56:00 by gpouzet           #+#    #+#             */
+/*   Updated: 2023/04/14 13:02:12 by gpouzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../list.h"
+#include "../libft.h"
 
-int	ft_lstsize(t_list *lst)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	t_list	*tmp;
-	int		ct;
-
-	ct = 0;
-	tmp = lst;
-	while (tmp != NULL)
-	{
-		tmp = tmp->next;
-		ct++;
-	}
-	return (ct);
+	if (!*little)
+		return ((char *)big);
+	while (len-- && *big)
+		if (!ft_strncmp(big++, little, ft_strlen(little)))
+			if (len + 1 >= ft_strlen(little))
+				return ((char *)--big);
+	return (0);
 }

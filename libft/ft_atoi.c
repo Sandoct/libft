@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpouzet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/14 18:50:16 by gpouzet           #+#    #+#             */
-/*   Updated: 2023/04/14 12:39:43 by gpouzet          ###   ########.fr       */
+/*   Created: 2022/07/20 09:05:41 by gpouzet           #+#    #+#             */
+/*   Updated: 2022/11/07 18:52:00 by gpouzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../list.h"
 
-int	ft_lstsize(t_list *lst)
+int	ft_atoi(const char *str)
 {
-	t_list	*tmp;
-	int		ct;
+	int	i;
+	int	sign;
+	int	nb;
 
-	ct = 0;
-	tmp = lst;
-	while (tmp != NULL)
+	i = 0;
+	sign = 1;
+	nb = 0;
+	while ((str[i] >= '\t' && str[i] <= '\r') || str[i] == ' ')
+		i++;
+	if (str[i] == '+')
+		i++;
+	else if (str[i] == '-')
 	{
-		tmp = tmp->next;
-		ct++;
+		sign *= -1;
+		i++;
 	}
-	return (ct);
+	while (str[i] >= '0' && str[i] <= '9')
+		nb = nb * 10 + (str[i++] - 48);
+	return (nb * sign);
 }

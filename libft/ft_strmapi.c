@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpouzet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/14 18:50:16 by gpouzet           #+#    #+#             */
-/*   Updated: 2023/04/14 12:39:43 by gpouzet          ###   ########.fr       */
+/*   Created: 2022/10/05 18:49:16 by gpouzet           #+#    #+#             */
+/*   Updated: 2023/04/14 13:01:35 by gpouzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../list.h"
+#include "../libft.h"
 
-int	ft_lstsize(t_list *lst)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	t_list	*tmp;
-	int		ct;
+	char			*mapi;
+	unsigned int	i;
 
-	ct = 0;
-	tmp = lst;
-	while (tmp != NULL)
+	i = 0;
+	if (!s)
+		return (ft_calloc(0, 0));
+	mapi = ft_calloc(1, ft_strlen(s) + 1);
+	if (!mapi)
+		return (ft_calloc(0, 0));
+	while (s[i])
 	{
-		tmp = tmp->next;
-		ct++;
+		mapi[i] = f(i, s[i]);
+		i++;
 	}
-	return (ct);
+	return (mapi);
 }

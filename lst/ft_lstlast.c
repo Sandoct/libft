@@ -6,10 +6,10 @@
 /*   By: gpouzet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 18:54:00 by gpouzet           #+#    #+#             */
-/*   Updated: 2022/10/18 14:38:45 by gpouzet          ###   ########.fr       */
+/*   Updated: 2023/04/14 12:38:50 by gpouzet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../libft.h"
+#include "../list.h"
 
 t_list	*ft_lstlast(t_list *lst)
 {
